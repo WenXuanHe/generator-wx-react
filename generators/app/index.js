@@ -66,8 +66,8 @@ module.exports = class extends Generator {
     writing() {
         const _path = this.appname;
         this.fs.copy(
-            this.templatePath('.trivis'),
-            this.destinationPath(_path + '/.trivis')
+            this.templatePath('.travis'),
+            this.destinationPath(_path + '/.travis')
         );
         this.fs.copy(
             this.templatePath('bin'),
@@ -124,10 +124,6 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
             this.templatePath('package.json'),
             this.destinationPath(_path + '/package.json'), { packagename: this.appname }
-        );
-        this.fs.copyTpl(
-            this.templatePath('README.md'),
-            this.destinationPath(_path + '/README.md')
         );
         this.fs.copyTpl(
             this.templatePath('webpack.config.js'),

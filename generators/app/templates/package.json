@@ -1,5 +1,5 @@
 {
-  "name": "myblog-front-end",
+  "name": "<%= packagename %>",
   "version": "0.1.0",
   "private": true,
   "scripts": {
