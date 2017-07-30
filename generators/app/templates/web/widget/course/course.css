@@ -1,0 +1,10 @@
+.widget-course {
+    font-family: 'Mydance';
+    padding-left: .9375rem;
+    .ufadeInUp {
+       display: block;
+    }
+    .ufadeOutDown {
+    	display: none;
+    }
+}

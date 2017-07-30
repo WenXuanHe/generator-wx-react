@@ -1,0 +1,62 @@
+/*自定义配置全局类*/
+:root {
+    --height: 70px;
+}
+.container-fluid{
+     padding-right: 0; 
+     padding-left: 0; 
+}
+body {
+    background: #eee;
+    background-image: url('images/furley_bg.png');
+}
+
+@font-face {
+    font-family: 'Mydance';
+    src: url(./images/sysfont.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+.spliter {
+    height: 0;
+    width: 100%;
+    border-top: 1px solid #d4d4d4;
+    border-bottom: 1px solid #FFF;
+    margin-top: 5px;
+}
+.title {
+    text-align: center;
+}
+
+/*全局类结束*/
+
+.widget-header {
+    .banner{
+        background: #FFFFFF;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2) !important;
+    }
+    .ucenter {
+        height: var(--height);
+        line-height: var(--height);
+        padding-right: 20px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+    .face {
+        height: 36px;
+        width: 36px;
+        border-radius: 18px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .title {
+        color: #a09b9b;
+    }
+    .logo a {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+    }
+}

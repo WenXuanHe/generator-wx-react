@@ -1,0 +1,10 @@
+<article class="widget-course">
+    <section>
+        <div id="app">
+            <h2 id="js-course-h2" @click="hello">{{msg}}</h2>
+            <ul id="js-course-ul" :class="{ 'ufadeOutDown' : isShow, 'ufadeInUp': !isShow}" ref="technology">
+            	<li v-for="(key,value) in datas"> {{value+1}}-{{key}}</li>
+            </ul>
+        </div>
+    </section>
+</article>
