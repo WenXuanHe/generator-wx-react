@@ -19,7 +19,8 @@ module.exports = class extends Generator {
     }
     constructor(args, opts) {
         super(args, opts);
-        this.appname = "yd-vue-kernel";
+        this.answers = null;
+        this.appname = "wx-react";
     }
     paths() {
         this.sourceRoot();
@@ -39,13 +40,25 @@ module.exports = class extends Generator {
             type: 'list',
             name: 'preprocessor',
             message: 'Select the CSS preprocessor',
-            choices: ['◉ PostCSS', '◉ Less', '◉ Sass', '◉ Stylus']
+            choices: ['◉ PostCSS', '◉ Sass']
+        },{
+            type: 'list',
+            name: 'framwork',
+            message: 'Select a js framwork',
+            choices: ['◉ React', '◉ Vue']
         }]).then((answers) => {
             this.log('app name', answers.name);
+            this.answers = answers;
             this.appname = answers.name;
             if (answers.preprocessor) {
                 this.log(chalk.yellow(
                     '预处理已被我强烈建议成PostCSS💻'
+                ));
+            }
+
+             if (answers.framwork) {
+                this.log(chalk.yellow(
+                    '建议使用React， 因为Vue我还没有配置好，哈哈'
                 ));
             }
         });
@@ -53,28 +66,52 @@ module.exports = class extends Generator {
     writing() {
         const _path = this.appname;
         this.fs.copy(
+            this.templatePath('.trivis'),
+            this.destinationPath(_path + '/.trivis')
+        );
+        this.fs.copy(
+            this.templatePath('bin'),
+            this.destinationPath(_path + '/bin')
+        );
+        this.fs.copy(
+            this.templatePath('helper'),
+            this.destinationPath(_path + '/helper')
+        );
+         this.fs.copy(
             this.templatePath('config'),
             this.destinationPath(_path + '/config')
         );
         this.fs.copy(
-            this.templatePath('src'),
-            this.destinationPath(_path + '/src')
+            this.templatePath('public'),
+            this.destinationPath(_path + '/public')
+        );
+        this.fs.copy(
+            this.templatePath('routes'),
+            this.destinationPath(_path + '/routes')
         );
         this.fs.copy(
             this.templatePath('test'),
             this.destinationPath(_path + '/test')
         );
         this.fs.copy(
-            this.templatePath('web'),
-            this.destinationPath(_path + '/web')
+            this.templatePath('views'),
+            this.destinationPath(_path + '/views')
         );
         this.fs.copy(
             this.templatePath('chromedriver'),
             this.destinationPath(_path + '/chromedriver')
         );
         this.fs.copyTpl(
-            this.templatePath('gulpfile.js'),
-            this.destinationPath(_path + '/gulpfile.js')
+            this.templatePath('.babelrc'),
+            this.destinationPath(_path + '/.babelrc')
+        );
+        this.fs.copyTpl(
+            this.templatePath('.travis.yml'),
+            this.destinationPath(_path + '/.travis.yml')
+        );
+        this.fs.copyTpl(
+            this.templatePath('app.js'),
+            this.destinationPath(_path + '/app.js')
         );
         this.fs.copyTpl(
             this.templatePath('id_rsa.enc'),
@@ -97,13 +134,13 @@ module.exports = class extends Generator {
             this.destinationPath(_path + '/webpack.config.js')
         );
         this.fs.copyTpl(
-            this.templatePath('yarn.lock'),
-            this.destinationPath(_path + '/yarn.lock')
+            this.templatePath('postcss.config.js'),
+            this.destinationPath(_path + '/postcss.config.js')
         );
     }
     end() {
         this.log(yosay(
-            '小灯灯创建任务Success😁'
+            '创建任务Success😁'
         ));
     }
 };

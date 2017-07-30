@@ -1,0 +1,70 @@
+@import './mixin.css';
+a{
+    &:hover{
+        color:color(var(--red) a(54%));
+    }
+}
+.name{
+    color:color(red a(40%));
+    background-color:color(red lightness(50%));
+}
+nav:any-link {
+  background-color: yellow;
+}
+
+.column-container{
+    color: #333;
+    @mixin clearfix;
+}
+.myName{
+    color: white;
+    background: linear-gradient(0deg, #333 30%, #777 0);
+    @mixin h50;
+}
+.star{
+    width: 100px;
+    height: 100px;
+    border:1px solid lightblue;
+
+}
+
+@keyframes  move1{
+    0%   {left:0px; top:0px;}
+    25%  {left:700px; top:0px;}
+    50%  {left:700px; top:300px;}
+    75%  {left:0px; top:300px;}
+    100% {left:0px; top:0px;}
+}
+@keyframes  move2{
+    0%   {left:0px; top:0px;}
+    25%  {left:700px; top:300px;}
+    50%  {left:700px; top:0px;}
+    75%  {left:0px; top:300px;}
+    100% {left:0px; top:0px;}
+}
+.nav>a{
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    background: #e067dc;
+    border-radius: 50px;
+       color: white;
+    /* width: 100%; */
+    text-decoration: none;
+    margin: auto;
+    display: inline-block;
+    margin-left: 22px;
+    position: relative;
+    &:nth-child(1){
+        animation:move1 50s linear infinite;
+    }
+
+    &:nth-child(2){
+        animation:move2 50s linear infinite;
+    }
+    &:hover{
+        animation-play-state: paused;
+    }
+}
+
+

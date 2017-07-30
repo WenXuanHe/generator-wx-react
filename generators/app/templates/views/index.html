@@ -1,0 +1,15 @@
+{% extends './templates/layout.html' %}
+{% block title %} your project {% endblock %}
+{% block head %}
+    <link href="http://localhost:3000/dist/styles/index.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div id="app">{% autoescape %} {{initialHTML}} {% endautoescape %}</div>
+     <script>
+        var initialData = '{% autoescape %}{{initialData}}{% endautoescape %}';
+        window._INITIAL_STATE_ = JSON.parse(initialData);
+    </script> 
+    <script type="text/javascript" src="http://localhost:3000/dist/vendors.js"></script><script type="text/javascript" src="http://localhost:3000/dist/index.js"></script>
+
+{% endblock %}

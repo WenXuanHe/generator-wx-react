@@ -1,7 +1,7 @@
 
 ![](/assets/logo_a7f0d3c.png)
 
-# 自己动手做的基于koa2和react的Pc端脚手架
+# 自己动手做的基于koa2和react的Pc端脚手架，支持ssr渲染
 
 An express-based Node.js web application bootstrapping module, extends kraken-js.
 

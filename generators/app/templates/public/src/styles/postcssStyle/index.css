@@ -1,0 +1,12 @@
+@import './mixin.css';
+
+.star{
+    margin-top: 100px;
+    margin-left: 100px;
+    @mixin five-star;
+}
+.column-container{
+    color: #333;
+    @mixin clearfix;
+}
+

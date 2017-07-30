@@ -1,0 +1,52 @@
+:root{
+    /*定义全局变量*/
+    --red:red;
+}
+
+/*定义所有的宏*/
+@define-mixin clearfix{
+    &:after{
+        display: table;
+        clear: both;
+        content: " ";
+    }
+}
+@define-mixin h50{
+    height: 50px;
+    line-height: 50px;
+}
+
+@define-mixin five-star{
+    & {
+        width: 50px;
+        height: 0px;
+        border-right: 69px solid transparent;
+        border-left: 69px solid transparent;
+        border-bottom: 50px solid #E91E63;
+        border-top: 0;
+        position: relative;
+        transform: rotate(-35deg);
+
+        &::before{
+            content: "";
+            width: inherit;
+            height: inherit;
+            border:inherit;
+            position: absolute;
+            top: -1px;
+            left: -70px;
+            transform: rotate(69deg);
+        }
+
+        &::after{
+            content: "";
+            width: inherit;
+            height: inherit;
+            border:inherit;
+            position: absolute;
+            top: -5px;
+            left: -60px;
+            transform: rotate(-75deg);
+        }
+    }
+}

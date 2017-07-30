@@ -1,0 +1,15 @@
+{% extends './templates/layout.html' %}
+{% block title %} your project {% endblock %}
+{% block head %}
+    {%style%}
+{% endblock %}
+
+{% block content %}
+    <div id="app">{% autoescape %} {{initialHTML}} {% endautoescape %}</div>
+     <script>
+        var initialData = '{% autoescape %}{{initialData}}{% endautoescape %}';
+        window._INITIAL_STATE_ = JSON.parse(initialData);
+    </script> 
+    {%script%}
+
+{% endblock %}

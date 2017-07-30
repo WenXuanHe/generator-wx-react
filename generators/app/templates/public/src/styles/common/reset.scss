@@ -1,0 +1,61 @@
+body, div, ul, li{
+    margin:0;
+    padding:0;
+}
+// html,body{
+//     height: 100%;
+// }
+.h_100{
+    height: 100%;
+}
+body{
+    font-size: 16px;
+    font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;
+    color: #374051;
+    background-color: #eff4f5;
+    word-wrap: break-word;
+    word-break: normal;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+input, select, button, textarea{
+    color: #374051;
+    outline: 0;
+}
+ul, li{
+    list-style: none;
+}
+input{
+    height: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border: 1px solid #d5d6d9;
+    &:hover{
+        border-color: #c1c2c5;
+    }
+    &:focus{
+        border-color: #21D376;
+    }
+}
+
+a{
+    text-decoration:none;
+}
+
+.clear {
+    clear: both;
+}
+
+.clearfix:before,.clearfix:after{
+    content:"";
+    display:table;
+}
+.clearfix:after{
+    clear:both;
+}
+.clearfix{
+    *zoom:1;
+}
+

@@ -1,0 +1,63 @@
+/**
+ * 书写规则
+ * g- 框架
+ * m- 模块：cm- 公共模块；m-私有模块
+ * u- 元件
+ * z- 状态
+ * 结构和皮肤要分离
+ */
+@import 'mixin.scss';
+@import 'reset.scss';
+@import 'base.scss';
+
+@include batWidth(20);
+@include batHeight(20);
+@include batMP(20);
+button, input, select, textarea,.btn {
+    outline: 0;
+    font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;
+    color: #374051;
+}
+.flex{
+    @include flex;
+    .col{
+        @include col(0);
+    }
+    @for $i from 1 to 7{
+        .col-#{$i}{
+            @include col($i);
+        }
+    }
+}
+
+
+.btn{
+    @include btn(14);
+}
+
+
+.c-btn{
+    @include emCalc(width, 30, 16);
+    @include emCalc(height, 20, 16);
+    @include emCalc(border-radius, 5, 16);
+
+    @for $i from 1 to length($colorList)+1{
+        &.c-btn-#{nth($colorListName,$i)}{
+            @include btn-factory(nth($colorList,$i));
+        }
+        &.c-btn-#{nth($colorListName,$i)}-active{
+            @include btn-factory-active(nth($colorList,$i));
+        }
+    }
+}
+
+
+.notice{
+    color: #52ff35;
+}
+.error{
+    color: $red;
+}
+.b-white{
+    background: #ffffff;
+}

@@ -1,0 +1,145 @@
+/**
+ * 集合所有mixin
+ * 控制全局变量，以$c- 开头
+ */
+//控制col-x 的数量
+$white:#ffffff;
+$red:#ff595f;
+$green:#21d376;
+$dark:#8190b5;
+$block:#374051;
+$blue:#52ADE7;
+$colorList:$blue;
+$colorListName:'blue';
+$base-font-size: 16 !default;
+
+$skin-default:#dcdcdc;
+
+@mixin emCalc($props,$sizes,$base:$base-font-size){
+    $values: ();
+    $sublists: false;
+    @each $s in $sizes {
+        //循环列表中多个属性值，例如text-shadow属性
+        @if type-of($s) == list {
+            $sublists: true;
+            $vv: ();
+            @each $ss in $s {
+                $vv: append($vv,if(type-of($ss) == number, #{$ss / $base}em, $ss));
+            }
+            $values: append($values,join((), $vv));
+            }
+        @else {
+            $values: append($values,if(type-of($s) == number, #{$s / $base}em, $s));
+        }
+    }
+    $value: join((), $values, if($sublists,comma,space));
+    @each $prop in $props {
+        #{$prop}: $value
+    }
+}
+
+@mixin flex{
+    display:flex;
+}
+
+@mixin just-cont($direct){
+    @include prefix('justify-content', $direct);
+}
+@mixin col($column){
+    @if $column > 0 { width:(100%/$column)}
+    @else {flex:1}
+}
+@mixin h($h, $base){
+    @include emCalc(height,$h, $base);
+    @include emCalc(line-height,$h, $base);
+}
+@mixin btn-factory($color){
+    color:$color;
+    border:1px solid $color;
+}
+@mixin btn-factory-active($color){
+    background: $color;
+    color:$white;
+}
+
+@mixin btn($base:$btn-font-size){
+    $btn-font-size:16 !default;
+    @include emCalc(font-size, $base, 16);//基于父元素的font-size
+    display:inline-block;
+    ///基于元素本身的font-size
+    @include h(34, $base);
+    @include emCalc(border-radius, 3, $base);
+    @include emCalc(padding, (0 14), $base);
+    @include emCalc(margin-right, 10, $base);
+    background: #fff;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    color: #333;
+    &.btn-green{
+        color:$white;
+        background:$green linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+        background-color:$green;
+        // box-shadow: 0 0.05em 0.25em rgba(0,0,0,.5);
+    }
+    &.btn-red{
+        color:$white;
+        background:$red linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+        background-color:$red;
+        // box-shadow: 0 0.05em 0.25em rgba(0,0,0,.5);
+    }
+    &.btn-dark{
+        color:$white;
+        background: $dark linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+        background-color:$dark;
+        // box-shadow: 0 0.05em 0.25em rgba(0,0,0,.5);
+    }
+}
+@mixin field($field, $base){
+    @include emCalc(padding-left,$field, $base);
+    @include emCalc(padding-right,$field, $base);
+}
+
+@mixin batWidth($max){
+    @for $i from 1 to $max {
+        .w#{$i*10}{
+            width: #{$i*10}px;
+        }
+    }
+}
+@mixin batHeight($max){
+    @for $i from 1 to $max {
+        .h#{$i*10}{
+            height: #{$i*10}px;
+            line-height: #{$i*10}px;
+        }
+    }
+}
+@mixin batMP($max){
+    @for $i from 1 to $max {
+        .ml#{$i*10}{
+            margin-left: #{$i*10}px;
+        }
+        .mr#{$i*10}{
+            margin-right: #{$i*10}px;
+        }
+        .mt#{$i*10}{
+            margin-top: #{$i*10}px;
+        }
+        .mb#{$i*10}{
+            margin-bottom: #{$i*10}px;
+        }
+        .pl#{$i*10}{
+            padding-left: #{$i*10}px;
+        }
+        .pr#{$i*10}{
+            padding-right: #{$i*10}px;
+        }
+        .pt#{$i*10}{
+            padding-top: #{$i*10}px;
+        }
+        .pb#{$i*10}{
+            padding-bottom: #{$i*10}px;
+        }
+    }
+}
