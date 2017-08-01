@@ -34,7 +34,7 @@ module.exports = class extends Generator {
         return this.prompt([{
             type: 'input',
             name: 'name',
-            message: 'Input Your project name',
+            message: 'please Input Your project name',
             default: this.appname // Default to current folder name
         }, {
             type: 'list',

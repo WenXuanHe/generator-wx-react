@@ -5,19 +5,19 @@ let path = require("path");
 let routeComponentRegex = /public\/src\/([^\/]+\/?[^\/]+).js$/;
 
 let htmlWebpackPluginIndex = new HtmlWebpackPlugin({
-    hash:false,//path.resolve(__dirname, 'views/template/index.html')
+    hash: false,//path.resolve(__dirname, 'views/template/index.html')
     filename: path.resolve(__dirname, 'views/index.html'),//最终生成的html文件
     template: path.resolve(__dirname, 'views/templates/index.html'),
-    chunks:['vendors', 'index'], //入口文件所依赖的js文件
-    inject:'define' //js文件插入到body最后一行
+    chunks: ['vendors', 'index'], //入口文件所依赖的js文件
+    inject: 'define' //js文件插入到body最后一行
 });
 
 htmlWebpackPluginIndex = require('./helper/injectAssetsIntoHtml')(htmlWebpackPluginIndex);
 
 module.exports = {
     entry: {
-        index:path.resolve(__dirname, "public/src/index.js"),
-        vendors:[
+        index: path.resolve(__dirname, "public/src/index.js"),
+        vendors: [
             'react',
             'react-dom',
             'react-redux',
@@ -33,7 +33,7 @@ module.exports = {
         //配置按需加载[chunkhash:5]
         chunkFilename: '[name].chunk.js',
         //给自动引用的生成文件加路径
-        publicPath:'http://localhost:3000/dist/'
+        publicPath: 'http://localhost:3000/dist/'
     },
     module: {
         loaders: [
@@ -51,6 +51,7 @@ module.exports = {
                     ]
                 }
             },
+            { test: /\.json$/, loader: "json-loader" },
             {
                 test: routeComponentRegex,
                 include: path.resolve(__dirname, 'src'),
@@ -66,7 +67,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style', ['css', 'postcss'])
+                loader: ExtractTextPlugin.extract('style', ['css', 'postcss', 'sass'])
             }
         ]
     },
@@ -81,14 +82,14 @@ module.exports = {
             $helper: path.resolve(__dirname, 'public/src/helper'),
         }
     },
-    plugins:[
+    plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
         htmlWebpackPluginIndex,
 
         //将模块暴露到全局去
         new webpack.ProvidePlugin({
-            '$':'jquery',
-            '_':'lodash'
+            '$': 'jquery',
+            '_': 'lodash'
         }),
         new ExtractTextPlugin("styles/[name].css"),
     ],

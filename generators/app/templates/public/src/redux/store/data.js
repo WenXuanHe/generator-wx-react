@@ -3,7 +3,8 @@ let data = {
         text:'welcome to react cli of hewenxuan'
     },
     hello:{
-        text:'hello world'
+        text:'hello world',
+        authors:{}
     }
 };
 
