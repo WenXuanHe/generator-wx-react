@@ -19,19 +19,17 @@ An express-based Node.js web application bootstrapping module, extends kraken-js
 
 
 ###依赖
-本脚手架基于yeoman-generator，需先全局安装yeoman-generator
+本脚手架基于yeoman-generator，需先全局安装yo
 
 ```
-npm install yeoman-generator -g
+npm install yo -g
+npm install generator-wx-react -g 
 ```
 
 ### install
 
-on windows
-
 ```
- npm install generator-wx-react -g 
- yo wx-react
+yo wx-react
 ```
 
 联系我 1061752323@qq.com
