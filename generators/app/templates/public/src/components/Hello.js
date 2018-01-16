@@ -33,7 +33,7 @@ class Hello extends React.Component {
         let { text, authors} = this.props;
         
         return (
-            <div className="">
+            <div className="m200">
                 <div>{text} {JSON.stringify(authors)}</div>
                 <p><span>{authors.firstName} {authors.lastName}</span></p>
                 <div className="">

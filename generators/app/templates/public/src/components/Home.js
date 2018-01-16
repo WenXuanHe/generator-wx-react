@@ -26,7 +26,7 @@ class Home extends React.Component {
         let { text } = this.props;
 
         return (
-            <div className="">
+            <div className="m200">
                 <div>{text}</div>
                 <div className="">
                     <div><Link to="/hello">hello world</Link></div>

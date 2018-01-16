@@ -36,31 +36,10 @@ module.exports = class extends Generator {
             name: 'name',
             message: 'please Input Your project name',
             default: this.appname // Default to current folder name
-        }, {
-            type: 'list',
-            name: 'preprocessor',
-            message: 'Select the CSS preprocessor',
-            choices: ['◉ PostCSS', '◉ Sass']
-        },{
-            type: 'list',
-            name: 'framwork',
-            message: 'Select a js framwork',
-            choices: ['◉ React', '◉ Vue']
         }]).then((answers) => {
             this.log('app name', answers.name);
             this.answers = answers;
             this.appname = answers.name;
-            if (answers.preprocessor) {
-                this.log(chalk.yellow(
-                    '预处理已被我强烈建议成PostCSS💻'
-                ));
-            }
-
-             if (answers.framwork) {
-                this.log(chalk.yellow(
-                    '建议使用React， 因为Vue我还没有配置好，哈哈'
-                ));
-            }
         });
     }
     writing() {
@@ -80,6 +59,10 @@ module.exports = class extends Generator {
          this.fs.copy(
             this.templatePath('config'),
             this.destinationPath(_path + '/config')
+        );
+        this.fs.copy(
+            this.templatePath('server'),
+            this.destinationPath(_path + '/server')
         );
         this.fs.copy(
             this.templatePath('public'),
